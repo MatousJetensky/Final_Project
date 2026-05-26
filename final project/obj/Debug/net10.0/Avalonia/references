@@ -26,12 +26,15 @@ C:\Users\matou\.nuget\packages\communitytoolkit.mvvm\8.4.2\lib\net8.0\CommunityT
 C:\Users\matou\.nuget\packages\harfbuzzsharp\8.3.1.1\lib\net8.0\HarfBuzzSharp.dll
 C:\Users\matou\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.CSharp.dll
+C:\Users\matou\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\10.0.0\lib\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\matou\.nuget\packages\microsoft.extensions.logging.abstractions\10.0.0\lib\net10.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.VisualBasic.Core.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.VisualBasic.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.Win32.Primitives.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.Win32.Registry.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\mscorlib.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\netstandard.dll
+C:\Users\matou\.nuget\packages\npgsql\10.0.2\lib\net10.0\Npgsql.dll
 C:\Users\matou\.nuget\packages\skiasharp\2.88.9\lib\net6.0\SkiaSharp.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\System.AppContext.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\System.Buffers.dll

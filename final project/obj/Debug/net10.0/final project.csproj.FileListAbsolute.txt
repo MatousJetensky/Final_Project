@@ -73,3 +73,6 @@ C:\Users\matou\RiderProjects\projects\final project\obj\Debug\net10.0\final proj
 C:\Users\matou\RiderProjects\projects\final project\obj\Debug\net10.0\ref\final project.dll
 C:\Users\matou\RiderProjects\projects\final project\obj\Debug\net10.0\final project.sourcelink.json
 C:\Users\matou\RiderProjects\projects\final project\bin\Debug\net10.0\CommunityToolkit.Mvvm.dll
+C:\Users\matou\RiderProjects\projects\final project\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\matou\RiderProjects\projects\final project\bin\Debug\net10.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\matou\RiderProjects\projects\final project\bin\Debug\net10.0\Npgsql.dll

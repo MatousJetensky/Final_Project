@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:final_project.ViewModels"
+             xmlns:models="clr-namespace:final_project.Models"
+             x:Class="final_project.Views.FilmListView"
+             x:DataType="vm:FilmListViewModel">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Toolbar -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" 
+                    Margin="16,12" Spacing="8">
+            <TextBox Width="250" Watermark="Hledat film…" />
+            <Button Content="+ Přidat film" />
+        </StackPanel>
+
+        <!-- Seznam filmů -->
+        <ItemsControl Grid.Row="1" 
+                      ItemsSource="{Binding Films}"
+                      Margin="16,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="models:Film">
+                    <Border Margin="0,4" Padding="12"
+                            CornerRadius="6"
+                            BorderThickness="1"
+                            BorderBrush="#333333"
+                            Background="#1e1e1e">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="{Binding Title}" 
+                                           FontSize="15"
+                                           FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding Director}"
+                                           FontSize="12"
+                                           Opacity="0.6" />
+                            </StackPanel>
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding StatusName}"
+                                       VerticalAlignment="Center"
+                                       Opacity="0.7" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </Grid>
+
+</UserControl>
