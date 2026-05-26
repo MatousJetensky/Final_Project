@@ -23,11 +23,16 @@ C:\Users\matou\.nuget\packages\avalonia.win32\11.3.12\lib\net8.0\Avalonia.Win32.
 C:\Users\matou\.nuget\packages\avalonia.win32\11.3.12\lib\net8.0\Avalonia.Win32.dll
 C:\Users\matou\.nuget\packages\avalonia.x11\11.3.12\lib\net8.0\Avalonia.X11.dll
 C:\Users\matou\.nuget\packages\communitytoolkit.mvvm\8.4.2\lib\net8.0\CommunityToolkit.Mvvm.dll
+C:\Users\matou\.nuget\packages\dotnetenv\3.2.0\lib\netstandard2.0\DotNetEnv.dll
 C:\Users\matou\.nuget\packages\harfbuzzsharp\8.3.1.1\lib\net8.0\HarfBuzzSharp.dll
 C:\Users\matou\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.CSharp.dll
-C:\Users\matou\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\10.0.0\lib\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\matou\.nuget\packages\microsoft.extensions.configuration.abstractions\1.1.2\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\matou\.nuget\packages\microsoft.extensions.configuration\1.1.2\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll
+C:\Users\matou\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\10.0.8\lib\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\matou\.nuget\packages\microsoft.extensions.dependencyinjection\10.0.8\lib\net10.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\matou\.nuget\packages\microsoft.extensions.logging.abstractions\10.0.0\lib\net10.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\matou\.nuget\packages\microsoft.extensions.primitives\1.1.1\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.VisualBasic.Core.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.VisualBasic.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\Microsoft.Win32.Primitives.dll
@@ -36,6 +41,7 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\mscor
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\netstandard.dll
 C:\Users\matou\.nuget\packages\npgsql\10.0.2\lib\net10.0\Npgsql.dll
 C:\Users\matou\.nuget\packages\skiasharp\2.88.9\lib\net6.0\SkiaSharp.dll
+C:\Users\matou\.nuget\packages\superpower\3.0.0\lib\net5.0\Superpower.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\System.AppContext.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\System.Buffers.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.3\ref\net10.0\System.Collections.Concurrent.dll
