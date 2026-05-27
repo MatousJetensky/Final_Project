@@ -6,9 +6,9 @@ services:
     env_file:
       - .env
     environment:
-      POSTGRES_USER: matyyy
-      POSTGRES_PASSWORD: matyyy1234
-      POSTGRES_DB: filmoteka
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_DB: ${DATABASE}
     ports:
       - "${PORT}:5432"
     volumes:
