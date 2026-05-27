@@ -25,30 +25,36 @@ public partial class FilmFormViewModel : ViewModelBase
     public ObservableCollection<FilmStatus> Statuses { get; } = new();
 
     // Konstruktor pro PŘIDÁNÍ
-    public FilmFormViewModel(IFilmRepository repository, Action onSaved)
+    private readonly Action _onBack;
+
+// Konstruktor pro PŘIDÁNÍ
+    public FilmFormViewModel(IFilmRepository repository, Action onSaved, Action onBack)
     {
         _repository = repository;
         _onSaved = onSaved;
+        _onBack = onBack;
         IsEditMode = false;
         LoadStatuses();
     }
 
-    // Konstruktor pro EDITACI
-    public FilmFormViewModel(IFilmRepository repository, Action onSaved, Film film)
+// Konstruktor pro EDITACI
+    public FilmFormViewModel(IFilmRepository repository, Action onSaved, Film film, Action onBack)
     {
         _repository = repository;
         _onSaved = onSaved;
+        _onBack = onBack;
         _editId = film.Id;
         IsEditMode = true;
-
         Title = film.Title;
         Director = film.Director ?? string.Empty;
         Year = film.Year?.ToString() ?? string.Empty;
         Genre = film.Genre ?? string.Empty;
-
         LoadStatuses();
         SelectedStatus = Statuses.FirstOrDefault(s => s.Id == film.StatusId);
     }
+
+    [RelayCommand]
+    private void GoBack() => _onBack();
 
     private void LoadStatuses()
     {

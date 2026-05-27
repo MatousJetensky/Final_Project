@@ -15,25 +15,25 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(IFilmRepository repository)
     {
         _repository = repository;
-        _currentView = new FilmListViewModel(repository, ShowFilmForm);
+        _currentView = new FilmListViewModel(repository, ShowFilmForm, ShowFilmEdit);
     }
 
     [RelayCommand]
     private void ShowFilmList()
     {
-        CurrentView = new FilmListViewModel(_repository, ShowFilmForm);
+        CurrentView = new FilmListViewModel(_repository, ShowFilmForm, ShowFilmEdit);
     }
 
     [RelayCommand]
     private void ShowFilmForm()
     {
-        CurrentView = new FilmFormViewModel(_repository, ShowFilmList);
+        CurrentView = new FilmFormViewModel(_repository, ShowFilmList, ShowFilmList);
     }
 
     [RelayCommand]
     private void ShowFilmEdit(Film film)
     {
-        CurrentView = new FilmFormViewModel(_repository, ShowFilmList, film);
+        CurrentView = new FilmFormViewModel(_repository, ShowFilmList, film, ShowFilmList);
     }
 
     [RelayCommand]

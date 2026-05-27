@@ -36,6 +36,18 @@
 
         <Button Content="Uložit" Command="{Binding SaveCommand}"
                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+        
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Content="← Zpět"
+                    Command="{Binding GoBackCommand}"
+                    HorizontalAlignment="Stretch"
+                    Background="Transparent" />
+            <Button Content="Smazat"
+                    Command="{Binding DeleteCommand}"
+                    IsVisible="{Binding IsEditMode}"
+                    Foreground="Red"
+                    Background="Transparent" />
+        </StackPanel>
 
     </StackPanel>
 </UserControl>

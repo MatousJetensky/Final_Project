@@ -15,6 +15,21 @@ public partial class FilmListViewModel : ViewModelBase
     private readonly Action _onAddFilm;
     private readonly Action<Film> _onSelectFilm;
     private List<Film> _allFilms = new();
+    private Film? _selectedFilm;
+    public Film? SelectedFilm
+    {
+        get => _selectedFilm;
+        set
+        {
+            SetProperty(ref _selectedFilm, value);
+            if (value != null)
+            {
+                _onSelectFilm(value);
+                _selectedFilm = null;
+                OnPropertyChanged(nameof(SelectedFilm));
+            }
+        }
+    }
 
     [ObservableProperty]
     private string _searchText = string.Empty;
@@ -64,7 +79,6 @@ public partial class FilmListViewModel : ViewModelBase
         foreach (var film in filtered)
             Films.Add(film);
     }
-
     [RelayCommand]
     private void ShowAddFilm() => _onAddFilm();
 
@@ -73,7 +87,6 @@ public partial class FilmListViewModel : ViewModelBase
     {
         SelectedStatus = SelectedStatus == status ? null : status;
     }
-
     [RelayCommand]
     private void SelectFilm(Film film) => _onSelectFilm(film);
 }
