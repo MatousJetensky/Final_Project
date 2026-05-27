@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -9,7 +11,8 @@ namespace final_project.ViewModels;
 public partial class FilmFormViewModel : ViewModelBase
 {
     private readonly IFilmRepository _repository;
-    private readonly System.Action _onSaved;
+    private readonly Action _onSaved;
+    private readonly Guid? _editId;
 
     [ObservableProperty] private string _title = string.Empty;
     [ObservableProperty] private string _director = string.Empty;
@@ -17,21 +20,41 @@ public partial class FilmFormViewModel : ViewModelBase
     [ObservableProperty] private string _genre = string.Empty;
     [ObservableProperty] private FilmStatus? _selectedStatus;
     [ObservableProperty] private string _errorMessage = string.Empty;
+    [ObservableProperty] private bool _isEditMode;
 
     public ObservableCollection<FilmStatus> Statuses { get; } = new();
 
-    public FilmFormViewModel(IFilmRepository repository, System.Action onSaved)
+    // Konstruktor pro PŘIDÁNÍ
+    public FilmFormViewModel(IFilmRepository repository, Action onSaved)
     {
         _repository = repository;
         _onSaved = onSaved;
+        IsEditMode = false;
         LoadStatuses();
+    }
+
+    // Konstruktor pro EDITACI
+    public FilmFormViewModel(IFilmRepository repository, Action onSaved, Film film)
+    {
+        _repository = repository;
+        _onSaved = onSaved;
+        _editId = film.Id;
+        IsEditMode = true;
+
+        Title = film.Title;
+        Director = film.Director ?? string.Empty;
+        Year = film.Year?.ToString() ?? string.Empty;
+        Genre = film.Genre ?? string.Empty;
+
+        LoadStatuses();
+        SelectedStatus = Statuses.FirstOrDefault(s => s.Id == film.StatusId);
     }
 
     private void LoadStatuses()
     {
         foreach (var s in _repository.GetAllStatuses())
             Statuses.Add(s);
-        if (Statuses.Count > 0)
+        if (SelectedStatus == null && Statuses.Count > 0)
             SelectedStatus = Statuses[0];
     }
 
@@ -51,7 +74,7 @@ public partial class FilmFormViewModel : ViewModelBase
 
         var film = new Film
         {
-            Id = System.Guid.NewGuid(),
+            Id = _editId ?? Guid.NewGuid(),
             Title = Title,
             Director = string.IsNullOrWhiteSpace(Director) ? null : Director,
             Year = int.TryParse(Year, out var y) ? y : null,
@@ -59,7 +82,19 @@ public partial class FilmFormViewModel : ViewModelBase
             StatusId = SelectedStatus.Id
         };
 
-        _repository.Add(film);
+        if (IsEditMode)
+            _repository.Update(film);
+        else
+            _repository.Add(film);
+
+        _onSaved();
+    }
+
+    [RelayCommand]
+    private void Delete()
+    {
+        if (_editId.HasValue)
+            _repository.Delete(_editId.Value);
         _onSaved();
     }
 }

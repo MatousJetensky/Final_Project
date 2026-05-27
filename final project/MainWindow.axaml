@@ -48,32 +48,32 @@
                            FontWeight="SemiBold" />
 
                 <Button Content="Plánuji"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="Plánuji"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10"
-                        Background="Transparent"
-                        BorderThickness="0" />
+                        Padding="16,10" Background="Transparent" BorderThickness="0" />
 
                 <Button Content="Koukám"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="Koukám"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10"
-                        Background="Transparent"
-                        BorderThickness="0" />
+                        Padding="16,10" Background="Transparent" BorderThickness="0" />
 
                 <Button Content="Dokoukáno"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="Dokoukáno"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10"
-                        Background="Transparent"
-                        BorderThickness="0" />
+                        Padding="16,10" Background="Transparent" BorderThickness="0" />
 
                 <Button Content="Zrušeno"
+                        Command="{Binding FilterByStatusCommand}"
+                        CommandParameter="Zrušeno"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10"
-                        Background="Transparent"
-                        BorderThickness="0" />
+                        Padding="16,10" Background="Transparent" BorderThickness="0" />
 
             </StackPanel>
         </Border>

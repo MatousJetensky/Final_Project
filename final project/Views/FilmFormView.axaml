@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:final_project.ViewModels"
+             x:Class="final_project.Views.FilmFormView"
+             x:DataType="vm:FilmFormViewModel">
+
+    <StackPanel Margin="20" Spacing="10" MaxWidth="400">
+
+        <TextBlock Text="Přidat film" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <TextBlock Text="Název *"/>
+        <TextBox Text="{Binding Title}" Watermark="Název filmu"/>
+
+        <TextBlock Text="Režisér"/>
+        <TextBox Text="{Binding Director}" Watermark="Jméno režiséra"/>
+
+        <TextBlock Text="Rok"/>
+        <TextBox Text="{Binding Year}" Watermark="např. 2024"/>
+
+        <TextBlock Text="Žánr"/>
+        <TextBox Text="{Binding Genre}" Watermark="např. Drama"/>
+
+        <TextBlock Text="Status"/>
+        <ComboBox ItemsSource="{Binding Statuses}"
+                  SelectedItem="{Binding SelectedStatus}"
+                  HorizontalAlignment="Stretch">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red"
+                   IsVisible="{Binding ErrorMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+        <Button Content="Uložit" Command="{Binding SaveCommand}"
+                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+
+    </StackPanel>
+</UserControl>

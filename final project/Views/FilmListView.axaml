@@ -10,8 +10,10 @@
         <!-- Toolbar -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" 
                     Margin="16,12" Spacing="8">
-            <TextBox Width="250" Watermark="Hledat film…" />
-            <Button Content="+ Přidat film" />
+            <TextBox Width="250" Watermark="Hledat film…"
+                     Text="{Binding SearchText}" />
+            <Button Content="+ Přidat film"
+                    Command="{Binding ShowAddFilmCommand}" />
         </StackPanel>
 
         <!-- Seznam filmů -->
