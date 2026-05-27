@@ -1,3 +1,4 @@
+using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using final_project.Models;
@@ -7,33 +8,49 @@ namespace final_project.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private readonly IFilmRepository _repository;
+    private readonly IFilmRepository _filmRepository;
+    private readonly IReviewRepository _reviewRepository;
 
     [ObservableProperty]
     private ViewModelBase _currentView;
 
-    public MainWindowViewModel(IFilmRepository repository)
+    public MainWindowViewModel(IFilmRepository filmRepository, IReviewRepository reviewRepository)
     {
-        _repository = repository;
-        _currentView = new FilmListViewModel(repository, ShowFilmForm, ShowFilmEdit);
+        _filmRepository = filmRepository;
+        _reviewRepository = reviewRepository;
+        _currentView = new FilmListViewModel(filmRepository, ShowFilmForm, ShowFilmDetail);
     }
 
     [RelayCommand]
     private void ShowFilmList()
     {
-        CurrentView = new FilmListViewModel(_repository, ShowFilmForm, ShowFilmEdit);
+        CurrentView = new FilmListViewModel(_filmRepository, ShowFilmForm, ShowFilmDetail);
     }
 
     [RelayCommand]
     private void ShowFilmForm()
     {
-        CurrentView = new FilmFormViewModel(_repository, ShowFilmList, ShowFilmList);
+        CurrentView = new FilmFormViewModel(_filmRepository, ShowFilmList, ShowFilmList);
     }
 
     [RelayCommand]
     private void ShowFilmEdit(Film film)
     {
-        CurrentView = new FilmFormViewModel(_repository, ShowFilmList, film, ShowFilmList);
+        CurrentView = new FilmFormViewModel(_filmRepository, ShowFilmList, film, ShowFilmList);
+    }
+
+    [RelayCommand]
+    private void ShowFilmDetail(Film film)
+    {
+        try
+        {
+            CurrentView = new FilmDetailViewModel(film, _reviewRepository, ShowFilmList);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"CHYBA: {ex}");
+            throw;
+        }
     }
 
     [RelayCommand]
@@ -42,4 +59,5 @@ public partial class MainWindowViewModel : ViewModelBase
         if (CurrentView is FilmListViewModel listVm)
             listVm.FilterByStatusCommand.Execute(status);
     }
+    
 }

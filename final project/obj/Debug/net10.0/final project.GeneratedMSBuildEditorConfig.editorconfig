@@ -34,6 +34,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/matou/RiderProjects/projects/final project/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/matou/RiderProjects/projects/final project/Views/FilmDetailView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/matou/RiderProjects/projects/final project/Views/FilmFormView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

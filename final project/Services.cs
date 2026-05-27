@@ -17,8 +17,8 @@ public class Services
             $"Host={Env.GetString("HOST")};Port={Env.GetString("PORT")};Database={Env.GetString("DATABASE")};Username={Env.GetString("USERNAME")};Password={Env.GetString("PASSWORD")};SSL Mode=Disable";
 
         services.AddSingleton<IFilmRepository>(new FilmRepository(connectionString));
+        services.AddSingleton<IReviewRepository>(new ReviewRepository(connectionString));
         services.AddTransient<MainWindowViewModel>();
-        services.AddTransient<FilmListViewModel>();
 
         return services.BuildServiceProvider();
     }
