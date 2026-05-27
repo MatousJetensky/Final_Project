@@ -12,16 +12,38 @@
             <Button Content="← Zpět"
                     Command="{Binding GoBackCommand}"
                     Background="Transparent"/>
+    
+            <!-- Název -->
             <TextBlock Text="{Binding Film.Title}"
-                       FontSize="24" FontWeight="Bold"/>
-            <TextBlock Text="{Binding Film.Director}"
-                       FontSize="14" Opacity="0.6"/>
-            <TextBlock Text="{Binding Film.StatusName}"
-                       FontSize="12" Opacity="0.5"/>
+                       FontSize="28" FontWeight="Bold"/>
+    
+            <!-- Řádek s rokem a žánrem -->
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <TextBlock Text="{Binding Film.Director}"
+                           FontSize="14" Opacity="0.7"/>
+                <TextBlock Text="•" Opacity="0.3"/>
+                <TextBlock Text="{Binding Film.Year}"
+                           FontSize="14" Opacity="0.7"/>
+                <TextBlock Text="•" Opacity="0.3"/>
+                <TextBlock Text="{Binding Film.Genre}"
+                           FontSize="14" Opacity="0.7"/>
+            </StackPanel>
+
+            <!-- Status jako badge -->
+            <Border Background="#2a2a2a" 
+                    CornerRadius="4" 
+                    Padding="8,3"
+                    HorizontalAlignment="Left">
+                <TextBlock Text="{Binding Film.StatusName}"
+                           FontSize="12" Opacity="0.8"/>
+            </Border>
+
             <Button Content="✏ Upravit film"
                     Command="{Binding EditFilmCommand}"
-                    Margin="0,4,0,0"
-                    Background="Transparent"/>
+                    Background="Transparent"
+                    Margin="0,4,0,0"/>
+    
+            <Separator Margin="0,8"/>
         </StackPanel>
 
         <!-- Spodní část: seznam + formulář -->

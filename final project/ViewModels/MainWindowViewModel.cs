@@ -14,6 +14,22 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private ViewModelBase _currentView;
 
+    [ObservableProperty]
+    private string? _activeStatus = null;
+
+    public bool IsPlanujActive => ActiveStatus == "Plánuji";
+    public bool IsKoukamActive => ActiveStatus == "Koukám";
+    public bool IsDokoukanoActive => ActiveStatus == "Dokoukáno";
+    public bool IsZrusenoActive => ActiveStatus == "Zrušeno";
+
+    partial void OnActiveStatusChanged(string? value)
+    {
+        OnPropertyChanged(nameof(IsPlanujActive));
+        OnPropertyChanged(nameof(IsKoukamActive));
+        OnPropertyChanged(nameof(IsDokoukanoActive));
+        OnPropertyChanged(nameof(IsZrusenoActive));
+    }
+
     public MainWindowViewModel(IFilmRepository filmRepository, IReviewRepository reviewRepository)
     {
         _filmRepository = filmRepository;
@@ -24,6 +40,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void ShowFilmList()
     {
+        ActiveStatus = null;
         CurrentView = new FilmListViewModel(_filmRepository, ShowFilmForm, ShowFilmDetail);
     }
 
@@ -33,10 +50,14 @@ public partial class MainWindowViewModel : ViewModelBase
         CurrentView = new FilmFormViewModel(_filmRepository, ShowFilmList, ShowFilmList);
     }
 
-    [RelayCommand]
     private void ShowFilmEdit(Film film)
     {
-        CurrentView = new FilmFormViewModel(_filmRepository, ShowFilmList, film, ShowFilmList);
+        CurrentView = new FilmFormViewModel(
+            _filmRepository,
+            ShowFilmList,
+            film,
+            () => ShowFilmDetail(film)
+        );
     }
 
     [RelayCommand]
@@ -44,7 +65,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         try
         {
-            CurrentView = new FilmDetailViewModel(film, _reviewRepository, ShowFilmList);
+            CurrentView = new FilmDetailViewModel(film, _reviewRepository, ShowFilmList, ShowFilmEdit);
         }
         catch (Exception ex)
         {
@@ -57,7 +78,9 @@ public partial class MainWindowViewModel : ViewModelBase
     private void FilterByStatus(string? status)
     {
         if (CurrentView is FilmListViewModel listVm)
-            listVm.FilterByStatusCommand.Execute(status);
+        {
+            ActiveStatus = ActiveStatus == status ? null : status;
+            listVm.FilterByStatusCommand.Execute(ActiveStatus);
+        }
     }
-    
 }

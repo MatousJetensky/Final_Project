@@ -14,6 +14,8 @@ public partial class FilmFormViewModel : ViewModelBase
     private readonly Action _onSaved;
     private readonly Guid? _editId;
 
+    public string FormTitle => IsEditMode ? "Upravit film" : "Přidat film";
+
     [ObservableProperty] private string _title = string.Empty;
     [ObservableProperty] private string _director = string.Empty;
     [ObservableProperty] private string _year = string.Empty;
@@ -22,12 +24,13 @@ public partial class FilmFormViewModel : ViewModelBase
     [ObservableProperty] private string _errorMessage = string.Empty;
     [ObservableProperty] private bool _isEditMode;
 
+    // ← PŘIDÁNO: notifikuje UI když se IsEditMode změní
+    partial void OnIsEditModeChanged(bool value) => OnPropertyChanged(nameof(FormTitle));
+
     public ObservableCollection<FilmStatus> Statuses { get; } = new();
 
-    // Konstruktor pro PŘIDÁNÍ
     private readonly Action _onBack;
 
-// Konstruktor pro PŘIDÁNÍ
     public FilmFormViewModel(IFilmRepository repository, Action onSaved, Action onBack)
     {
         _repository = repository;
@@ -37,7 +40,6 @@ public partial class FilmFormViewModel : ViewModelBase
         LoadStatuses();
     }
 
-// Konstruktor pro EDITACI
     public FilmFormViewModel(IFilmRepository repository, Action onSaved, Film film, Action onBack)
     {
         _repository = repository;

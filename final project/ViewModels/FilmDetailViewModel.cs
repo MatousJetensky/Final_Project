@@ -11,6 +11,7 @@ public partial class FilmDetailViewModel : ViewModelBase
 {
     private readonly IReviewRepository _reviewRepository;
     private readonly Action _onBack;
+    private readonly Action<Film> _onEdit;  // ← PŘIDÁNO
 
     public Film Film { get; }
 
@@ -22,11 +23,13 @@ public partial class FilmDetailViewModel : ViewModelBase
 
     public ObservableCollection<Review> Reviews { get; } = new();
 
-    public FilmDetailViewModel(Film film, IReviewRepository reviewRepository, Action onBack)
+    // ← PŘIDÁN parametr onEdit
+    public FilmDetailViewModel(Film film, IReviewRepository reviewRepository, Action onBack, Action<Film> onEdit)
     {
         Film = film;
         _reviewRepository = reviewRepository;
         _onBack = onBack;
+        _onEdit = onEdit;  // ← PŘIDÁNO
         LoadReviews();
     }
 
@@ -44,6 +47,9 @@ public partial class FilmDetailViewModel : ViewModelBase
         Rating = value.Rating?.ToString() ?? string.Empty;
         Content = value.Content ?? string.Empty;
     }
+
+    [RelayCommand]
+    private void EditFilm() => _onEdit(Film);  // ← PŘIDÁNO
 
     [RelayCommand]
     private void Save()

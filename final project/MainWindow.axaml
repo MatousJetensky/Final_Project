@@ -10,7 +10,17 @@
         Title="Filmotéka"
         Width="900" Height="600"
         MinWidth="700" MinHeight="450">
-    
+
+    <Window.Styles>
+        <Style Selector="Button.active">
+            <Setter Property="Background" Value="#1a4a8a"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style Selector="Button.active:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#1f5aa8"/>
+        </Style>
+    </Window.Styles>
+
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
@@ -30,7 +40,6 @@
                            Opacity="0.5"
                            FontWeight="SemiBold" />
 
-                <!-- View 1: Seznam filmů -->
                 <Button Content="Seznam filmů"
                         Command="{Binding ShowFilmListCommand}"
                         HorizontalAlignment="Stretch"
@@ -50,36 +59,38 @@
                 <Button Content="Plánuji"
                         Command="{Binding FilterByStatusCommand}"
                         CommandParameter="Plánuji"
+                        Classes.active="{Binding IsPlanujActive}"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10" Background="Transparent" BorderThickness="0" />
+                        Padding="16,10" BorderThickness="0" />
 
                 <Button Content="Koukám"
                         Command="{Binding FilterByStatusCommand}"
                         CommandParameter="Koukám"
+                        Classes.active="{Binding IsKoukamActive}"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10" Background="Transparent" BorderThickness="0" />
+                        Padding="16,10" BorderThickness="0" />
 
                 <Button Content="Dokoukáno"
                         Command="{Binding FilterByStatusCommand}"
                         CommandParameter="Dokoukáno"
+                        Classes.active="{Binding IsDokoukanoActive}"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10" Background="Transparent" BorderThickness="0" />
+                        Padding="16,10" BorderThickness="0" />
 
                 <Button Content="Zrušeno"
                         Command="{Binding FilterByStatusCommand}"
                         CommandParameter="Zrušeno"
+                        Classes.active="{Binding IsZrusenoActive}"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
-                        Padding="16,10" Background="Transparent" BorderThickness="0" />
+                        Padding="16,10" BorderThickness="0" />
 
             </StackPanel>
         </Border>
 
-        <!-- MAIN CONTENT AREA -->
-        <!-- Sem se bude přepínat mezi views pomocí ContentControl -->
         <ContentControl Grid.Column="1"
                         Content="{Binding CurrentView}" />
 
